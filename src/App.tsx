@@ -1,4 +1,4 @@
-function App() {
+export default function App() {
 	return (
 		<>
 			<header className='header'>
@@ -18,5 +18,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;
