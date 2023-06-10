@@ -1,7 +1,7 @@
 import { convertBinaryToString } from '../src/utils/convert';
 import { describe, it, expect } from 'vitest';
 
-describe('function: getLength', () => {
+describe('convert binary to string', () => {
 	it('returns the correct value', () => {
 		expect(convertBinaryToString('11')).toBe(3);
 		expect(convertBinaryToString('100')).toBe(4);
@@ -28,5 +28,9 @@ describe('function: getLength', () => {
 		expect(() =>
 			convertBinaryToString('this is a long string. longer than 8 characters')
 		).toThrowError('More than 8 Characters Received');
+	});
+	it('throws an error if no argument is passed', () => {
+		// @ts-expect-error: testing
+		expect(() => convertBinaryToString()).toThrowError();
 	});
 });

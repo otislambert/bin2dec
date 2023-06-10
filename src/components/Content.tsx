@@ -1,4 +1,4 @@
-export default function Main() {
+export default function Content() {
 	return (
 		<main data-testid='main-element'>
 			<div className='centered'>
