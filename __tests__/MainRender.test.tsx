@@ -50,6 +50,11 @@ describe('Convert Button', () => {
 		const button = screen.getByTestId('convert-button');
 		expect(button.nodeName).toBe('BUTTON');
 	});
+	it('has the correct text content', () => {
+		render(<Main />);
+		const button = screen.getByTestId('convert-button');
+		expect(button.textContent).toBe('Convert!');
+	});
 });
 
 describe('Results Element', () => {

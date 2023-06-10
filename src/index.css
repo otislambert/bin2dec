@@ -22,7 +22,7 @@ main {
 	gap: 2em;
 }
 
-.input {
+.input-container {
 	display: flex;
 	flex-direction: row;
 	gap: 1em;
