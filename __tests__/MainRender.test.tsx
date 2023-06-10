@@ -55,6 +55,22 @@ describe('Convert Button', () => {
 		const button = screen.getByTestId('convert-button');
 		expect(button.textContent).toBe('Convert!');
 	});
+	it('is disabled by default', () => {
+		render(<Content />);
+		const button = screen.getByTestId('convert-button');
+		expect(button.getAttribute('disabled')).toBe('');
+	});
+	it('is not disabled with a valid input entered', () => {
+		render(<Content />);
+		const input = screen.getByTestId('input-node');
+		const button = screen.getByTestId('convert-button');
+
+		act(() => {
+			fireEvent.change(input, { target: { value: '10' } });
+		});
+
+		expect(button.getAttribute('disabled')).not.toBe('');
+	});
 });
 
 describe('Initial Results Element', () => {
