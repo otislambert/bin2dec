@@ -4,8 +4,8 @@ import { convertBinaryToString } from '../utils/convert';
 
 export default function Content() {
 	// * state
-	const [input, setInput] = useState<string>();
-	const [validInput, setValidInput] = useState<boolean>();
+	const [input, setInput] = useState<string>('');
+	const [validInput, setValidInput] = useState<boolean>(false);
 	const [result, setResult] = useState<number>();
 	const [errorMessage, setErrorMessage] = useState<string>();
 
@@ -31,7 +31,7 @@ export default function Content() {
 	return (
 		<main data-testid='main-element'>
 			<div className='centered'>
-				{errorMessage && <div>{errorMessage}</div>}
+				{errorMessage && <div data-testid='error-dialog'>{errorMessage}</div>}
 				<div className='input-container' data-testid='input-container'>
 					<input
 						type='text'
@@ -40,7 +40,11 @@ export default function Content() {
 						data-testid='input-node'
 						onChange={(e) => setInput(e.target.value)}
 					/>
-					<button data-testid='convert-button' onClick={handleConvertClick}>
+					<button
+						data-testid='convert-button'
+						onClick={handleConvertClick}
+						disabled={!validInput}
+					>
 						Convert!
 					</button>
 				</div>

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import Content from '../src/components/Content';
 import React from 'react';
 
@@ -65,14 +65,34 @@ describe('Initial Results Element', () => {
 	});
 });
 
-describe.skip('Results Element Rendering', () => {
+describe('Results Element Rendering', () => {
 	it('has the correct node name', () => {
 		render(<Content />);
+		const input = screen.getByTestId('input-node');
+		const button = screen.getByTestId('convert-button');
+
+		act(() => {
+			fireEvent.change(input, { target: { value: '10' } });
+		});
+		act(() => {
+			fireEvent.click(button);
+		});
+
 		const results = screen.getByTestId('results-container');
 		expect(results.nodeName).toBe('DIV');
 	});
 	it('has the correct class name', () => {
 		render(<Content />);
+		const input = screen.getByTestId('input-node');
+		const button = screen.getByTestId('convert-button');
+
+		act(() => {
+			fireEvent.change(input, { target: { value: '10' } });
+		});
+		act(() => {
+			fireEvent.click(button);
+		});
+
 		const results = screen.getByTestId('results-container');
 		expect(results.getAttribute('class')).toBe('results');
 	});
