@@ -1,14 +1,29 @@
 import { useEffect, useState } from 'react';
 import { validateInput } from '../utils/validate';
+import { convertBinaryToString } from '../utils/convert';
 
 export default function Content() {
+	// * state
 	const [input, setInput] = useState<string>();
+	const [validInput, setValidInput] = useState<boolean>();
 	const [result, setResult] = useState<number>();
 	const [errorMessage, setErrorMessage] = useState<string>();
 
+	// * functions
+	const handleConvertClick = () => {
+		if (validInput && input) {
+			const decimal = convertBinaryToString(input);
+			setResult(decimal);
+		} else {
+			setErrorMessage('Invalid input provided');
+		}
+	};
+
+	// * effects
 	useEffect(() => {
 		if (input) {
 			const valid = validateInput(input);
+			setValidInput(valid);
 			if (!valid) setErrorMessage('Non Binary Character Received');
 		}
 	}, [input]);
@@ -25,7 +40,9 @@ export default function Content() {
 						data-testid='input-node'
 						onChange={(e) => setInput(e.target.value)}
 					/>
-					<button data-testid='convert-button'>Convert!</button>
+					<button data-testid='convert-button' onClick={handleConvertClick}>
+						Convert!
+					</button>
 				</div>
 				{result && (
 					<div className='results' data-testid='results-container'>
