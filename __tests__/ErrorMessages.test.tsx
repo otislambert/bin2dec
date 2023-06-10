@@ -22,4 +22,17 @@ describe('Error Message', () => {
 		const error = await screen.findByTestId('error-dialog');
 		expect(error).toBeDefined();
 	});
+
+	it('has the correct classes', async () => {
+		render(<Content />);
+
+		const input = screen.getByTestId('input-node');
+
+		act(() => {
+			fireEvent.change(input, { target: { value: 'abc' } });
+		});
+
+		const error = await screen.findByTestId('error-dialog');
+		expect(error.getAttribute('class')).toBe('error-dialog');
+	});
 });

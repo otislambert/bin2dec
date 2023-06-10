@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { validateInput } from '../utils/validate';
 import { convertBinaryToString } from '../utils/convert';
+import ErrorDialog from './ErrorDialog';
 
 export default function Content() {
 	// * state
@@ -31,7 +32,7 @@ export default function Content() {
 	return (
 		<main data-testid='main-element'>
 			<div className='centered'>
-				{errorMessage && <div data-testid='error-dialog'>{errorMessage}</div>}
+				{errorMessage && <ErrorDialog message={errorMessage} />}
 				<div className='input-container' data-testid='input-container'>
 					<input
 						type='text'
