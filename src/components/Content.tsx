@@ -27,9 +27,11 @@ export default function Content() {
 					/>
 					<button data-testid='convert-button'>Convert!</button>
 				</div>
-				<div className='results' data-testid='results-container'>
-					<p>Results go here...</p>
-				</div>
+				{result && (
+					<div className='results' data-testid='results-container'>
+						<p>{result}</p>
+					</div>
+				)}
 			</div>
 		</main>
 	);
