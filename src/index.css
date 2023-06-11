@@ -37,7 +37,16 @@ main {
 	padding: 1em;
 }
 
+.error-container {
+	min-height: 45px;
+	min-width: 1005;
+}
+
 .error-dialog {
 	border: 3px solid red;
 	border-radius: 10px;
+}
+
+.error-dialog > p {
+	margin: 10px;
 }

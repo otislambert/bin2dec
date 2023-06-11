@@ -27,6 +27,8 @@ export default function Content() {
 			setValidInput(valid);
 			if (!valid) setErrorMessage('Only 1s and 0s are allowed');
 			if (valid) setErrorMessage(undefined);
+		} else {
+			setValidInput(false);
 		}
 	}, [input]);
 
@@ -39,6 +41,7 @@ export default function Content() {
 						type='text'
 						value={input}
 						placeholder='Binary String'
+						maxLength={8}
 						data-testid='input-node'
 						onChange={(e) => setInput(e.target.value)}
 					/>

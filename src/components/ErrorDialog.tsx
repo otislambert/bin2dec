@@ -3,11 +3,13 @@ export default function ErrorDialog({
 }: {
 	message: string | undefined;
 }) {
-	if (message) {
-		return (
-			<div data-testid='error-dialog' className='error-dialog'>
-				{message}
-			</div>
-		);
-	}
+	return (
+		<div className='error-container'>
+			{message && (
+				<div data-testid='error-dialog' className='error-dialog'>
+					<p>{message}</p>
+				</div>
+			)}
+		</div>
+	);
 }
