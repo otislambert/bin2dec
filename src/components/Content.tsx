@@ -25,7 +25,8 @@ export default function Content() {
 		if (input) {
 			const valid = validateInput(input);
 			setValidInput(valid);
-			if (!valid) setErrorMessage('Non Binary Character Received');
+			if (!valid) setErrorMessage('Only 1s and 0s are allowed');
+			if (valid) setErrorMessage(undefined);
 		}
 	}, [input]);
 
